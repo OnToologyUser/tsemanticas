@@ -1,0 +1,435 @@
+Prefix(:=<http://www.semanticweb.org/alejandro/ontologies/2019/10/untitled-ontology-4#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.semanticweb.org/alejandro/ontologies/2019/10/untitled-ontology-4>
+
+Declaration(Class(:ABC))
+Declaration(Class(:CYP))
+Declaration(Class(:CYP1))
+Declaration(Class(:CYP2))
+Declaration(Class(:CYP3))
+Declaration(Class(:Cancer))
+Declaration(Class(:Enfermedad))
+Declaration(Class(:Enzima))
+Declaration(Class(:Farmaco))
+Declaration(Class(:Inhibidor_de_Tirosina_Kinasa))
+Declaration(Class(:Proteina))
+Declaration(Class(:Transportador))
+Declaration(ObjectProperty(:esInducidoPor))
+Declaration(ObjectProperty(:esInhibidoPor))
+Declaration(ObjectProperty(:esTratadoPor))
+Declaration(ObjectProperty(:induce))
+Declaration(ObjectProperty(:inhibe))
+Declaration(ObjectProperty(:trata))
+Declaration(DataProperty(:ICD10))
+Declaration(DataProperty(:administracion))
+Declaration(DataProperty(:cas))
+Declaration(DataProperty(:cromosoma))
+Declaration(DataProperty(:drugbank))
+Declaration(DataProperty(:enfermedad))
+Declaration(DataProperty(:etiopatogenia))
+Declaration(DataProperty(:farmaco))
+Declaration(DataProperty(:formula))
+Declaration(DataProperty(:funcion))
+Declaration(DataProperty(:localizacion))
+Declaration(DataProperty(:mesh))
+Declaration(DataProperty(:modificacionPostraduccional))
+Declaration(DataProperty(:nombreEnfermedad))
+Declaration(DataProperty(:nombreFarmaco))
+Declaration(DataProperty(:nombreProteina))
+Declaration(DataProperty(:omim))
+Declaration(DataProperty(:pm))
+Declaration(DataProperty(:proteina))
+Declaration(DataProperty(:pubchem))
+Declaration(DataProperty(:sinonimo))
+Declaration(NamedIndividual(:ABCB1))
+Declaration(NamedIndividual(:CYP1A2))
+Declaration(NamedIndividual(:CYP2C9))
+Declaration(NamedIndividual(:CYP3A4))
+Declaration(NamedIndividual(:Melanoma))
+Declaration(NamedIndividual(:Vemurafenib))
+
+############################
+#   Object Properties
+############################
+
+# Object Property: :esInducidoPor (esInducidoPor)
+
+AnnotationAssertion(rdfs:comment :esInducidoPor "Inversa de induce (Un fármaco induce una proteína cuando, al administrarse, aumente la actividad de esta)"@es)
+AnnotationAssertion(rdfs:label :esInducidoPor "esInducidoPor"@es)
+InverseObjectProperties(:esInducidoPor :induce)
+ObjectPropertyDomain(:esInducidoPor :Proteina)
+ObjectPropertyRange(:esInducidoPor :Farmaco)
+
+# Object Property: :esInhibidoPor (esInhibidoPor)
+
+AnnotationAssertion(rdfs:comment :esInhibidoPor "Inversa de inhibe (Un fármaco inhibe una proteína cuando, al administrarse, impide la actividad de esta)"@es)
+AnnotationAssertion(rdfs:label :esInhibidoPor "esInhibidoPor"@es)
+InverseObjectProperties(:esInhibidoPor :inhibe)
+ObjectPropertyDomain(:esInhibidoPor :Proteina)
+ObjectPropertyRange(:esInhibidoPor :Farmaco)
+
+# Object Property: :esTratadoPor (esTratadoPor)
+
+AnnotationAssertion(rdfs:comment :esTratadoPor "Inversa de trata (Un fármaco trata una enfermedad cuando, al administrarse, elimina o reduce la enfermedad, o palia sus síntomas.)"@es)
+AnnotationAssertion(rdfs:label :esTratadoPor "esTratadoPor"@es)
+InverseObjectProperties(:esTratadoPor :trata)
+ObjectPropertyDomain(:esTratadoPor :Enfermedad)
+ObjectPropertyRange(:esTratadoPor :Farmaco)
+
+# Object Property: :induce (induce)
+
+AnnotationAssertion(rdfs:comment :induce "Un fármaco induce una proteína cuando, al administrarse, aumente la actividad de esta."@es)
+AnnotationAssertion(rdfs:label :induce "induce"@es)
+ObjectPropertyDomain(:induce :Farmaco)
+ObjectPropertyRange(:induce :Proteina)
+
+# Object Property: :inhibe (inhibe)
+
+AnnotationAssertion(rdfs:comment :inhibe "Un fármaco inhibe una proteína cuando, al administrarse, impide la actividad de esta"@es)
+AnnotationAssertion(rdfs:label :inhibe "inhibe"@es)
+ObjectPropertyDomain(:inhibe :Farmaco)
+ObjectPropertyRange(:inhibe :Proteina)
+
+# Object Property: :trata (trata)
+
+AnnotationAssertion(rdfs:comment :trata "Un fármaco trata una enfermedad cuando, al administrarse, elimina o reduce la enfermedad, o palia sus síntomas."@es)
+AnnotationAssertion(rdfs:label :trata "trata"@es)
+ObjectPropertyDomain(:trata :Farmaco)
+ObjectPropertyRange(:trata :Enfermedad)
+
+
+############################
+#   Data Properties
+############################
+
+# Data Property: :ICD10 (ICD10)
+
+AnnotationAssertion(rdfs:comment :ICD10 "Identificador del ICD10"@es)
+AnnotationAssertion(rdfs:label :ICD10 "ICD10"@es)
+SubDataPropertyOf(:ICD10 :enfermedad)
+DataPropertyDomain(:ICD10 :Enfermedad)
+DataPropertyRange(:ICD10 rdf:PlainLiteral)
+
+# Data Property: :administracion (administracion)
+
+AnnotationAssertion(rdfs:comment :administracion "Vía de administración del fármaco"@es)
+AnnotationAssertion(rdfs:label :administracion "administracion"@es)
+SubDataPropertyOf(:administracion :farmaco)
+DataPropertyDomain(:administracion :Farmaco)
+DataPropertyRange(:administracion rdf:PlainLiteral)
+
+# Data Property: :cas (cas)
+
+AnnotationAssertion(rdfs:comment :cas "Identificador CAS"@es)
+AnnotationAssertion(rdfs:label :cas "cas"@es)
+SubDataPropertyOf(:cas :farmaco)
+DataPropertyDomain(:cas :Farmaco)
+DataPropertyRange(:cas rdf:PlainLiteral)
+
+# Data Property: :cromosoma (cromosoma)
+
+AnnotationAssertion(rdfs:comment :cromosoma "Cromosoma en el que se encuentra el gen que codifica la proteína"@es)
+AnnotationAssertion(rdfs:label :cromosoma "cromosoma"@es)
+SubDataPropertyOf(:cromosoma :proteina)
+DataPropertyDomain(:cromosoma :Proteina)
+DataPropertyRange(:cromosoma rdf:PlainLiteral)
+
+# Data Property: :drugbank (drugbank)
+
+AnnotationAssertion(rdfs:comment :drugbank "Identificador en DrugBank"@es)
+AnnotationAssertion(rdfs:label :drugbank "drugbank"@es)
+SubDataPropertyOf(:drugbank :farmaco)
+DataPropertyDomain(:drugbank :Farmaco)
+DataPropertyRange(:drugbank rdf:PlainLiteral)
+
+# Data Property: :enfermedad (enfermedad)
+
+AnnotationAssertion(rdfs:comment :enfermedad "Conjunto de propiedades de las enfermedades"@es)
+AnnotationAssertion(rdfs:label :enfermedad "enfermedad"@es)
+DataPropertyDomain(:enfermedad :Enfermedad)
+
+# Data Property: :etiopatogenia (etiopatogenia)
+
+AnnotationAssertion(rdfs:comment :etiopatogenia "Causa de la enfermedad (agente etiológico o proceso patogénico)"@es)
+AnnotationAssertion(rdfs:label :etiopatogenia "etiopatogenia"@es)
+SubDataPropertyOf(:etiopatogenia :enfermedad)
+DataPropertyDomain(:etiopatogenia :Enfermedad)
+DataPropertyRange(:etiopatogenia rdf:PlainLiteral)
+
+# Data Property: :farmaco (farmaco)
+
+AnnotationAssertion(rdfs:comment :farmaco "Conjunto de propiedades de los fármacos"@es)
+AnnotationAssertion(rdfs:label :farmaco "farmaco"@es)
+
+# Data Property: :formula (formula)
+
+AnnotationAssertion(rdfs:comment :formula "Fórmula química"@es)
+AnnotationAssertion(rdfs:label :formula "formula"@es)
+SubDataPropertyOf(:formula :farmaco)
+DataPropertyDomain(:formula :Farmaco)
+DataPropertyRange(:formula rdf:PlainLiteral)
+
+# Data Property: :funcion (funcion)
+
+AnnotationAssertion(rdfs:comment :funcion "Función de la proteína"@es)
+AnnotationAssertion(rdfs:label :funcion "funcion"@es)
+SubDataPropertyOf(:funcion :proteina)
+DataPropertyDomain(:funcion :Proteina)
+DataPropertyRange(:funcion rdf:PlainLiteral)
+
+# Data Property: :localizacion (localizacion)
+
+AnnotationAssertion(rdfs:comment :localizacion "Localización subcelular de la proteína"@es)
+AnnotationAssertion(rdfs:label :localizacion "localizacion"@es)
+SubDataPropertyOf(:localizacion :proteina)
+DataPropertyDomain(:localizacion :Proteina)
+DataPropertyRange(:localizacion rdf:PlainLiteral)
+
+# Data Property: :mesh (mesh)
+
+AnnotationAssertion(rdfs:comment :mesh "Identificador de MeSH"@es)
+AnnotationAssertion(rdfs:label :mesh "mesh"@es)
+SubDataPropertyOf(:mesh :enfermedad)
+DataPropertyDomain(:mesh :Enfermedad)
+DataPropertyRange(:mesh rdf:PlainLiteral)
+
+# Data Property: :modificacionPostraduccional (modificacionPostraduccional)
+
+AnnotationAssertion(rdfs:comment :modificacionPostraduccional "Si existen, conjunto de modificaciones postraduccionales de la proteína"@es)
+AnnotationAssertion(rdfs:label :modificacionPostraduccional "modificacionPostraduccional"@es)
+SubDataPropertyOf(:modificacionPostraduccional :proteina)
+DataPropertyDomain(:modificacionPostraduccional :Proteina)
+DataPropertyRange(:modificacionPostraduccional rdf:PlainLiteral)
+
+# Data Property: :nombreEnfermedad (nombreEnfermedad)
+
+AnnotationAssertion(rdfs:comment :nombreEnfermedad "Nombre de la enfermedad"@es)
+AnnotationAssertion(rdfs:label :nombreEnfermedad "nombreEnfermedad"@es)
+SubDataPropertyOf(:nombreEnfermedad :enfermedad)
+DataPropertyDomain(:nombreEnfermedad :Enfermedad)
+DataPropertyRange(:nombreEnfermedad rdf:PlainLiteral)
+
+# Data Property: :nombreFarmaco (nombreFarmaco)
+
+AnnotationAssertion(rdfs:comment :nombreFarmaco "Nombre del fármaco"@es)
+AnnotationAssertion(rdfs:label :nombreFarmaco "nombreFarmaco"@es)
+SubDataPropertyOf(:nombreFarmaco :farmaco)
+DataPropertyDomain(:nombreFarmaco :Farmaco)
+DataPropertyRange(:nombreFarmaco rdf:PlainLiteral)
+
+# Data Property: :nombreProteina (nombreProteina)
+
+AnnotationAssertion(rdfs:comment :nombreProteina "Nombre de la proteína"@es)
+AnnotationAssertion(rdfs:label :nombreProteina "nombreProteina"@es)
+SubDataPropertyOf(:nombreProteina :proteina)
+DataPropertyDomain(:nombreProteina :Proteina)
+DataPropertyRange(:nombreProteina rdf:PlainLiteral)
+
+# Data Property: :omim (omim)
+
+AnnotationAssertion(rdfs:comment :omim "Identificador en OMIM"@es)
+AnnotationAssertion(rdfs:label :omim "omim"@es)
+SubDataPropertyOf(:omim :enfermedad)
+DataPropertyDomain(:omim :Enfermedad)
+DataPropertyRange(:omim xsd:integer)
+
+# Data Property: :pm (pm)
+
+AnnotationAssertion(rdfs:comment :pm "Peso molecular"@es)
+AnnotationAssertion(rdfs:label :pm "pm"@es)
+SubDataPropertyOf(:pm :farmaco)
+DataPropertyDomain(:pm :Farmaco)
+DataPropertyRange(:pm xsd:float)
+
+# Data Property: :proteina (proteina)
+
+AnnotationAssertion(rdfs:comment :proteina "Conjunto de propiedades de las proteínas"@es)
+AnnotationAssertion(rdfs:label :proteina "proteina"@es)
+
+# Data Property: :pubchem (pubchem)
+
+AnnotationAssertion(rdfs:comment :pubchem "Identificador de PubChem"@es)
+AnnotationAssertion(rdfs:label :pubchem "pubchem"@es)
+SubDataPropertyOf(:pubchem :farmaco)
+DataPropertyDomain(:pubchem :Farmaco)
+DataPropertyRange(:pubchem xsd:integer)
+
+# Data Property: :sinonimo (sinonimo)
+
+AnnotationAssertion(rdfs:comment :sinonimo "Nombre alternativo de la proteína"@es)
+AnnotationAssertion(rdfs:label :sinonimo "sinonimo"@es)
+SubDataPropertyOf(:sinonimo :proteina)
+DataPropertyDomain(:sinonimo :Proteina)
+DataPropertyRange(:sinonimo rdf:PlainLiteral)
+
+
+
+############################
+#   Classes
+############################
+
+# Class: :ABC (ABC)
+
+AnnotationAssertion(rdfs:comment :ABC "Tipo de proteínas transportadoras ABC"@es)
+AnnotationAssertion(rdfs:label :ABC "ABC"@es)
+SubClassOf(:ABC :Transportador)
+
+# Class: :CYP (CYP)
+
+AnnotationAssertion(rdfs:comment :CYP "Citocromos, enzimas comúnmente encargadas del metabolismo corporal, como el metabolismo de fármacos o xenobióticos"@es)
+AnnotationAssertion(rdfs:label :CYP "CYP"@es)
+SubClassOf(:CYP :Enzima)
+
+# Class: :CYP1 (CYP1)
+
+AnnotationAssertion(rdfs:comment :CYP1 "Citocromos tipo 1"@es)
+AnnotationAssertion(rdfs:label :CYP1 "CYP1"@es)
+SubClassOf(:CYP1 :CYP)
+
+# Class: :CYP2 (CYP2)
+
+AnnotationAssertion(rdfs:comment :CYP2 "Citocromos tipo 2"@es)
+AnnotationAssertion(rdfs:label :CYP2 "CYP2"@es)
+SubClassOf(:CYP2 :CYP)
+
+# Class: :CYP3 (CYP3)
+
+AnnotationAssertion(rdfs:comment :CYP3 "Citocromos tipo 3"@es)
+AnnotationAssertion(rdfs:label :CYP3 "CYP3"@es)
+SubClassOf(:CYP3 :CYP)
+
+# Class: :Cancer (Cancer)
+
+AnnotationAssertion(rdfs:comment :Cancer "Conjunto de enfermedades caracterizadas por un crecimiento anormal de células"@es)
+AnnotationAssertion(rdfs:label :Cancer "Cancer"@es)
+SubClassOf(:Cancer :Enfermedad)
+
+# Class: :Enfermedad (Enfermedad)
+
+AnnotationAssertion(rdfs:comment :Enfermedad "Clase que incluye todas las enfermedades de la ontolgía"@es)
+AnnotationAssertion(rdfs:label :Enfermedad "Enfermedad"@es)
+
+# Class: :Enzima (Enzima)
+
+AnnotationAssertion(rdfs:comment :Enzima "Proteínas cuya función es catalizar reacciones bioquímicas"@es)
+AnnotationAssertion(rdfs:label :Enzima "Enzima"@es)
+SubClassOf(:Enzima :Proteina)
+
+# Class: :Farmaco (Farmaco)
+
+AnnotationAssertion(rdfs:comment :Farmaco "Clase que incluye todos los fármacos de la ontología"@es)
+AnnotationAssertion(rdfs:label :Farmaco "Farmaco"@es)
+
+# Class: :Inhibidor_de_Tirosina_Kinasa (InhibidorDeTirosinaKinasa)
+
+AnnotationAssertion(rdfs:comment :Inhibidor_de_Tirosina_Kinasa "Fármacos que inhiben la actividad de las tirosinas kinasas, comúnmente utilizados como terapia antineoplásica."@es)
+AnnotationAssertion(rdfs:label :Inhibidor_de_Tirosina_Kinasa "InhibidorDeTirosinaKinasa"@es)
+SubClassOf(:Inhibidor_de_Tirosina_Kinasa :Farmaco)
+
+# Class: :Proteina (Proteina)
+
+AnnotationAssertion(rdfs:comment :Proteina "Clase que incluye todas las proteínas de la ontologia"@es)
+AnnotationAssertion(rdfs:label :Proteina "Proteina"@es)
+
+# Class: :Transportador (Transportador)
+
+AnnotationAssertion(rdfs:comment :Transportador "Proteínas cuya función es el transporte de otras moléculas"@es)
+AnnotationAssertion(rdfs:label :Transportador "Transportador"@es)
+SubClassOf(:Transportador :Proteina)
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: :ABCB1 (ABCB1)
+
+AnnotationAssertion(rdfs:comment :ABCB1 "Proteína transportadora tipo ABC B1"@es)
+AnnotationAssertion(rdfs:label :ABCB1 "ABCB1"@es)
+ClassAssertion(:ABC :ABCB1)
+ObjectPropertyAssertion(:esInhibidoPor :ABCB1 :Vemurafenib)
+DataPropertyAssertion(:cromosoma :ABCB1 "7"^^xsd:string)
+DataPropertyAssertion(:funcion :ABCB1 "Transporte de moléculas al espacio extracelular"@es)
+DataPropertyAssertion(:localizacion :ABCB1 "Membrana plasmática"@es)
+DataPropertyAssertion(:modificacionPostraduccional :ABCB1 "Glicosilación: 91, 94, 99;
+fosfoserina: 660"@es)
+DataPropertyAssertion(:nombreProteina :ABCB1 "ABCB1"^^xsd:string)
+DataPropertyAssertion(:sinonimo :ABCB1 "Multidrug resistance protein 1"@en)
+
+# Individual: :CYP1A2 (CYP1A2)
+
+AnnotationAssertion(rdfs:comment :CYP1A2 "Citocromo tipo 1, A2"@es)
+AnnotationAssertion(rdfs:label :CYP1A2 "CYP1A2"@es)
+ClassAssertion(:CYP1 :CYP1A2)
+ObjectPropertyAssertion(:esInhibidoPor :CYP1A2 :Vemurafenib)
+DataPropertyAssertion(:cromosoma :CYP1A2 "15"^^xsd:string)
+DataPropertyAssertion(:funcion :CYP1A2 "Metabolismo de xenobióticos"@es)
+DataPropertyAssertion(:localizacion :CYP1A2 "Membrana del retículo endoplásmico"@es)
+DataPropertyAssertion(:modificacionPostraduccional :CYP1A2 "Glicosilación: 69"@es)
+DataPropertyAssertion(:nombreProteina :CYP1A2 "CYP1A2")
+DataPropertyAssertion(:sinonimo :CYP1A2 "Colesterol-25-hidrolasa"@es)
+
+# Individual: :CYP2C9 (CYP2C9)
+
+AnnotationAssertion(rdfs:comment :CYP2C9 "Citocromo tipo 2, C9"@es)
+AnnotationAssertion(rdfs:label :CYP2C9 "CYP2C9"@es)
+ClassAssertion(:CYP2 :CYP2C9)
+ObjectPropertyAssertion(:esInhibidoPor :CYP2C9 :Vemurafenib)
+DataPropertyAssertion(:cromosoma :CYP2C9 "10"^^xsd:string)
+DataPropertyAssertion(:funcion :CYP2C9 "Metabolismo de xenobióticos"@es)
+DataPropertyAssertion(:localizacion :CYP2C9 "Membrana del retículo endoplásmico"@es)
+DataPropertyAssertion(:nombreProteina :CYP2C9 "CYP2C9")
+DataPropertyAssertion(:sinonimo :CYP2C9 "3(R)-limoneno-6-monooxigenasa"@es)
+
+# Individual: :CYP3A4 (CYP3A4)
+
+AnnotationAssertion(rdfs:comment :CYP3A4 "Citocromo tipo 3, A4"@es)
+AnnotationAssertion(rdfs:label :CYP3A4 "CYP3A4"@es)
+ClassAssertion(:CYP3 :CYP3A4)
+ObjectPropertyAssertion(:esInducidoPor :CYP3A4 :Vemurafenib)
+DataPropertyAssertion(:cromosoma :CYP3A4 "7"^^xsd:string)
+DataPropertyAssertion(:funcion :CYP3A4 "Metabolismo de xenobióticos"@es)
+DataPropertyAssertion(:localizacion :CYP3A4 "Membrana del retículo endoplásmico"@es)
+DataPropertyAssertion(:modificacionPostraduccional :CYP3A4 "Poliubiquitinación"@es)
+DataPropertyAssertion(:nombreProteina :CYP3A4 "CYP3A4")
+DataPropertyAssertion(:sinonimo :CYP3A4 "1,8-cineol-2-exo-monooxigenasa"@es)
+
+# Individual: :Melanoma (Melanoma)
+
+AnnotationAssertion(rdfs:comment :Melanoma "Enfermedad neoplásica caracterizada por un crecimiento descontrolado de melanocitos"@es)
+AnnotationAssertion(rdfs:label :Melanoma "Melanoma"@es)
+ClassAssertion(:Cancer :Melanoma)
+ObjectPropertyAssertion(:esTratadoPor :Melanoma :Vemurafenib)
+DataPropertyAssertion(:ICD10 :Melanoma "C43"^^xsd:string)
+DataPropertyAssertion(:etiopatogenia :Melanoma "División descontrolada de melanocitos"@es)
+DataPropertyAssertion(:mesh :Melanoma "D008545")
+DataPropertyAssertion(:nombreEnfermedad :Melanoma "Melanoma"@es)
+DataPropertyAssertion(:omim :Melanoma "155600"^^xsd:integer)
+
+# Individual: :Vemurafenib (Vemurafenib)
+
+AnnotationAssertion(rdfs:comment :Vemurafenib "Inhibidor de tirosina kinasa utilizado como agente antineoplásico"@es)
+AnnotationAssertion(rdfs:label :Vemurafenib "Vemurafenib"@es)
+ClassAssertion(:Inhibidor_de_Tirosina_Kinasa :Vemurafenib)
+ObjectPropertyAssertion(:induce :Vemurafenib :CYP3A4)
+ObjectPropertyAssertion(:inhibe :Vemurafenib :ABCB1)
+ObjectPropertyAssertion(:inhibe :Vemurafenib :CYP1A2)
+ObjectPropertyAssertion(:inhibe :Vemurafenib :CYP2C9)
+ObjectPropertyAssertion(:trata :Vemurafenib :Melanoma)
+DataPropertyAssertion(:administracion :Vemurafenib "Oral"@es)
+DataPropertyAssertion(:cas :Vemurafenib "918504-65-1")
+DataPropertyAssertion(:drugbank :Vemurafenib "DB08881")
+DataPropertyAssertion(:formula :Vemurafenib "C23H18ClF2N3O3S")
+DataPropertyAssertion(:nombreFarmaco :Vemurafenib "Vemurafenib")
+DataPropertyAssertion(:pm :Vemurafenib "489.0725"^^xsd:float)
+DataPropertyAssertion(:pubchem :Vemurafenib "42611257"^^xsd:integer)
+
+
+DisjointClasses(:CYP1 :CYP2 :CYP3)
+)
